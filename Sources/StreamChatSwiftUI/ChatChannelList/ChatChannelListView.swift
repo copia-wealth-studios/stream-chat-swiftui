@@ -11,7 +11,7 @@ public struct ChatChannelListView<Factory: ViewFactory>: View {
     @Injected(\.colors) private var colors
     @Injected(\.utils) private var utils
 
-    @StateObject private var viewModel: ChatChannelListViewModel
+    @ObservedObject private var viewModel: ChatChannelListViewModel
     @State private var tabBar: UITabBar?
 
     private let viewFactory: Factory
@@ -34,7 +34,7 @@ public struct ChatChannelListView<Factory: ViewFactory>: View {
             channelListController: channelListController,
             selectedChannelId: selectedChannelId
         )
-        _viewModel = StateObject(
+        _viewModel = ObservedObject(
             wrappedValue: channelListVM
         )
         self.viewFactory = viewFactory
